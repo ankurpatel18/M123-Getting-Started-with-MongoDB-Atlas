@@ -1,0 +1,71 @@
+=====================================================
+
+Final: Question 1
+
+Which of the following are true of replica set configuration in Atlas?
+
+You may choose replica sets with any number of nodes up to 50.
+You may add additional nodes to a replica set after it has been deployed.
+You may scale your instances vertically with no downtime.
+
+Ans : You may add additional nodes to a replica set after it has been deployed.
+Ans : You may scale your instances vertically with no downtime.
+
+=====================================================
+
+Final: Question 2
+
+
+Horizontally scaling your cluster in Atlas can involve doing which of the following?
+
+Creating an additional cluster
+Enabling backup
+Adding nodes to your replica set(s)
+Increasing the power of your instances
+Turning a replica set into a sharded cluster
+
+
+Ans : Turning a replica set into a sharded cluster
+
+=====================================================
+
+Final: Question 3
+
+
+Download and unpack the handout. When you do, you will find that it contains a directory called final-exam-mongodump. You will need to mongorestore it to an Atlas cluster, where it will put a single document into the messages collection of the finalExam database.
+
+You may find the following example string useful when connecting to your instance:
+
+mongorestore --host m123final-shard-00-00-cl0rt.mongodb.net --port 27017 --authenticationDatabase admin --ssl --username admin --password PASSWORD final-exam-mongodump/
+
+
+mongo mongodb://m123final-shard-00-00-cl0rt.mongodb.net:27017,m123final-shard-00-01-cl0rt.mongodb.net:27017,m123final-shard-00-02-cl0rt.mongodb.net:27017/admin?replicaSet=m123Final-shard-0 --ssl --username admin --password PASSWORD
+
+
+The value of the messages field will be a string. Please input the string below. Be sure to include the quotation marks around the string, but no other part of the document. For instance, if the document were:
+
+{ "_id" : "message-from-will", "message" : "This is the correct answer." }
+then you would input:
+
+"This is the correct answer."
+Please input your answer below.
+
+
+Ans : "Keep up the good work!"
+
+=====================================================
+
+Final: Question 4
+
+Which of the following are differences between Cloud Manager and Atlas?
+
+MongoDB provides backup for Atlas, but not for Cloud Manager
+MongoDB decides on the server settings for Atlas, but not for Cloud Manager
+MongoDB provides the infrastructure for Atlas, but not Cloud Manager
+MongoDB provides a monitoring dashboard for Atlas, but not for Cloud Manager
+
+
+Ans : 	MongoDB decides on the server settings for Atlas, but not for Cloud Manager
+		MongoDB provides the infrastructure for Atlas, but not Cloud Manager
+
+=====================================================

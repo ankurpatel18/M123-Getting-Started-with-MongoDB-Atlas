@@ -1,0 +1,54 @@
+http://mongodb.com/cloud
+
+Connecting to Atlas server : 
+
+mongo mongodb://m123-scaling-shard-00-00-cl0rt.mongodb.net:37017/admin --ssl --username admin --password PASSWORD
+
+=====================================================
+
+Homework: Lab: Scaling Horizontally
+
+In this lab, we will scale out our m123-scaling deployment to use a sharded cluster. Go ahead and reconfigure your current cluster to create a two shard cluster. Remember, that is achieve simply by flipping the appropriate toggle near the bottom of the configuration modal.
+
+Once you have your sharded cluster created, please connect to the cluster in a mongo shell using an admin user. You'll want a user that has permissions to manage a sharded cluster.
+
+Once connected, please enable sharding on the test collection.
+
+sh.enableSharding("test")
+Then shard the test.companies collection.
+
+sh.shardCollection("test.companies", {name: 1, created_at: 1})
+Finally, download the attached and mongoimport the companies.json file you find. Note that you will need to specify the host, port, username, and password based on the values you can find in the connection string for you cluster.
+
+Once the import has finished, connect to the cluster and copy the output of the following command into the text box below.
+
+use config
+db.shards.count()
+
+mongoimport --drop --host m123-scaling-shard-00-00-cl0rt.mongodb.net --port 27017 --ssl --username testuser --password PASSWORD  --authenticationDatabase admin -d test -c companies ./companies_dataset/companies.json
+
+
+
+for local working
+
+mongod --dbpath ./data/configdb --configsvr
+mongo localhost:27019
+
+db.shards.save({ "_id" : "s1", "host" : "localhost:27501" })
+db.shards.save({ "_id" : "s2", "host" : "localhost:27601" })
+
+mongos --configdb localhost:27019
+
+mongod --shardsvr --fork --logpath s1.log --smallfiles --oplogSize 50 --dbpath ./data/s1 --port 27501
+mongod --shardsvr --fork --logpath s2.log --smallfiles --oplogSize 50 --dbpath ./data/s2 --port 27601
+
+mongo
+
+
+mongoimport --drop --host localhost --port 27501 -d test -c companies companies.json
+
+
+Ans : 2
+
+
+=====================================================

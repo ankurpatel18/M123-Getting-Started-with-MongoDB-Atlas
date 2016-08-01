@@ -1,0 +1,69 @@
+http://mongodb.com/cloud
+
+Connecting to Atlas server : 
+
+mongo mongodb://m123-rs1-shard-00-00-cl0rt.mongodb.net:27017,m123-rs1-shard-00-01-cl0rt.mongodb.net:27017,m123-rs1-shard-00-02-cl0rt.mongodb.net:27017/admin?replicaSet=m123-rs1-shard-0 --ssl --username admin --password PASSWORD
+
+=====================================================
+
+Homework: 
+
+Lab: Creating an Atlas Cluster
+
+Which of the following command line parameters are present in the connection string?
+
+
+--username
+--host
+--password
+--port
+--ssl
+
+Ans : 	--username 
+		--password
+		--ssl
+
+=====================================================
+
+
+Homework: 
+
+Lab: Creating an Atlas Cluster
+
+Once you have successfully connected, you should see a mongo shell prompt that matches the following template.
+
+xxxx-xxx-xxxxx-x:XXXXXXX>
+Please copy and paste the complete text of the prompt into the box below and submit. If you have created your cluster following the instructions above, your submission should be marked correct. If your answer is not correct, please do not exhaust your allowed attempts guessing. Instead, please visit the class discussion forum for help.
+
+Ans : m123-rs1-shard-0:PRIMARY>
+
+=====================================================
+
+Homework: 
+
+Lab: Loading Data
+
+Now let's load some data into our cluster. First, in the "Security" tab, create a new user called testuser for readWrite on the test database. Next, download the handout for this lab and unzip the dataset it contains. Finally, use mongoimport to load this dataset into our cluster using a command similar to the following.
+
+mongoimport --drop --host m123-rs1-shard-00-00-cl0rt.mongodb.net --port 27017 --ssl --username testuser --password PASSWORD  --authenticationDatabase admin -d test -c inspections city_inspections.json
+
+Note that this command assumes that the city_inspections.json file is in the current directory. Please replace PRIMARY_HOSTNAME and PASSWORD with the appropriate values based on the cluster connection string and the pasword you created for testuser when typing this command for yourself.
+
+Once import completes, please answer the following question. Assuming you issued the mongoimport command correctly, how many documents were imported into the test.inspections collection? When you have successfully completed this lab, please terminate your cluster.
+
+
+76016
+78113
+79334
+80000
+81047
+82334
+84171
+85238
+90134
+99875
+
+Ans : 81047
+
+
+=====================================================
